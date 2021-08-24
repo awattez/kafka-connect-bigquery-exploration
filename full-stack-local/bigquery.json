@@ -1,0 +1,19 @@
+{
+  "name": "bigquery-users",
+  "config": {
+    "topics": "users",
+    "connector.class": "BigQuerySink",
+    "project": "bigquery-kk-connect",
+    "defaultDataset": "bigquery_dataset",
+    "upsertEnabled": "true",
+    "deleteEnabled": "true",
+    "autoCreateTables": "true",
+    "kafkaKeyFieldName": "kafkakey",
+    "tasks.max": "1",
+    "keyfile": "/etc/config/secret/serviceaccount.json",
+    "transforms": "HoistFieldKey",
+    "transforms.HoistFieldKey.type": "org.apache.kafka.connect.transforms.HoistField$Key",
+    "transforms.HoistFieldKey.field": "userid",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter"
+  }
+}
